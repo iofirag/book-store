@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //configuring connection to mongoLab
-var connection = mongoose.connect('mongodb://xxxx:xxxx@ds044229.mlab.com:44229/roundrobin');
+var connection = mongoose.connect('mongodb://admin:1234@ds044229.mlab.com:44229/roundrobin');
 
 
 // Import schema modules
