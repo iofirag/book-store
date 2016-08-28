@@ -1,0 +1,128 @@
+<div class="page-header" ng-init="init()">
+	<h1>Welcome {{user.username}} <small>({{user.role}})</small></h1>
+    <button class="btn btn-danger" ng-click="logout()">Log Out</button>
+</div>
+
+
+
+
+<section ng-show="user.role == 'admin'">
+	<form class="navbar-form ">
+		<label>get book by id</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="Id" ng-model="book.id">
+	    </div>
+	    <button class="btn btn-success" ng-click="get_bookById()">Submit</button>
+	</form>
+	<form class="navbar-form ">
+		<label>get book by name</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="Name" ng-model="book.name">
+	    </div>
+	    <button class="btn btn-success" ng-click="get_bookByName()">Submit</button>
+	</form>
+	<form class="navbar-form ">
+		<label>get genre by id</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="Id" ng-model="genre.id">
+	    </div>
+	    <button class="btn btn-success" ng-click="get_genreById()">Submit</button>
+	</form>
+
+	<form class="navbar-form ">
+		<label>get genre by name</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="name" ng-model="genre.name">
+	    </div>
+	    <button class="btn btn-success" ng-click="get_genreByName()">Submit</button>
+	</form>
+	<form class="navbar-form ">
+		<label>Delete book by id</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="Id" ng-model="book.id">
+	    </div>
+	    <button class="btn btn-danger" ng-click="delete_bookById()">Submit</button>
+	</form>
+	<form class="navbar-form ">
+		<label>Delete genre by name</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="name" ng-model="genre.name">
+	    </div>
+	    <button class="btn btn-danger" ng-click="delete_genreByName()">Submit</button>
+	</form>
+</section>
+
+
+
+
+<section ng-show="user.role == 'client' || user.role == 'admin'">
+	<form class="navbar-form ">
+		<label>get all genres</label>
+	    <button class="btn btn-info" ng-click="get_allGenres()">Submit</button>
+	</form>
+	<form class="navbar-form ">
+		<label>get book names by genre</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="Genre" ng-model="genre.name">
+	    </div>
+	    <button class="btn btn-info" ng-click="get_bookNamesByGenre()">Submit</button>
+	</form>
+	<form class="navbar-form ">
+		<label>get book description by book id</label>
+	    <div class="form-group">
+	        <input type="text" class="form-control" placeholder="Id" ng-model="book.id">
+	    </div>
+	    <button class="btn btn-info" ng-click="get_bookDescriptionByBookId()">Submit</button>
+	</form>
+</section>
+
+
+
+<footer>
+	<div class="panel panel-default">
+	  	<div class="panel-body">
+	   		<section>Response:</section>
+	   		<div class="form-group">
+			    <textarea class="form-control">{{response}}</textarea>
+			</div>
+	  	</div>
+	</div>
+	<div class="panel panel-default">
+	  	<div class="panel-body">
+	   		<section>Book result:</section>
+	   		<div ng-repeat="(key, value) in bookResult">
+				<div class="">
+				  <div class="col-sm-3 col-md-2">
+				    <div class="thumbnail">
+				      <img ng-src="http://icons.iconarchive.com/icons/simiographics/mixed/128/Book-icon.png" alt="book">
+				      <div class="caption">
+				        <h3>{{value.name}}</h3>
+				        <p>{{value.description}}</p>
+				        <p><section class="btn btn-primary">{{value.genre}}</section></p>
+				        <value aria-hidden="true">{{value._id}}</value>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+	  	</div>
+	</div>
+	<div class="panel panel-default">
+	  	<div class="panel-body">
+	   		<section>Genre result:</section>
+	   		<div ng-repeat="(key, value) in genreResult">
+				<div class="">
+				  <div class="col-sm-3 col-md-2">
+				    <div class="thumbnail">
+				      <img ng-src="http://media.idownloadblog.com/wp-content/uploads/2015/05/Snapseed-2-for-iOS-app-icon-small.png" alt="genre">
+				      <div class="caption">
+				        <h3>{{value.name}}</h3>
+				        <p>{{value.id}}</p>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+	  	</div>
+	</div>
+</footer>
